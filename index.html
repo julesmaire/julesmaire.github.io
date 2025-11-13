@@ -1,85 +1,234 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8" />
-<style type="text/css">
-html { background:#000000; }
-body { font-family:DejaVu Sans Mono, monospace; line-height:1em; margin:auto; width: 75%; padding:.1em .5em; color:#aaaaaa; }
-* { font-size:20px; font-weight:normal; font-style:normal; }
-h2,h3,h4 { margin:.2em 0; user-select:none; }
-h2 { margin: 2em 0;  font-size: 2em; color:#d82161; }
-h3 { color:#00ff7f; }
-h4,b { color:#ffffff; }
-ul { list-style:square; padding:0; margin:.5em 1em; }
-li { margin:.1em; }
-a { color:#00ced1; }
-a.highlight { color:#ffff55; }
-a:hover,h3:hover { color:#000000; background:#aaaaaa; }
-a:link { text-decoration:none; }
-label.clicker { cursor:pointer; outline:none; }
-input.clicker { display:none; }
-input.clicker:checked+div { transition:opacity ease 0.3s; }
-input.clicker:not(:checked)+div { height:0; overflow:hidden; opacity:0; }
-</style>
-
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Jules Maire</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --text: #222222;
+  --accent: #008f7a;
+  --highlight: #d82161;
+  --link: #0077cc;
+  --hover-bg: #eaeaea;
+  --font: 'DejaVu Sans Mono', monospace;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.6;
+}
+
+body {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+h1 {
+  color: var(--highlight);
+  font-size: 2.2em;
+  margin-bottom: 0.2em;
+}
+
+p {
+  margin: 0.5em 0 1.5em;
+}
+
+/* Collapsible sections */
+input.toggle { display: none; }
+
+label.toggle-label {
+  display: flex;
+  align-items: center;
+  color: var(--accent);
+  font-size: 1.3em;
+  margin: 1.2em 0 0.5em;
+  cursor: pointer;
+  user-select: none;
+}
+
+label.toggle-label::before {
+  content: "▸";
+  margin-right: 0.5em;
+  transition: transform 0.25s;
+}
+
+input.toggle:checked + label.toggle-label::before {
+  transform: rotate(90deg);
+}
+
+section.collapsible {
+  border-left: 2px solid var(--accent);
+  padding-left: 1em;
+  margin-bottom: 1.5em;
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+input.toggle:not(:checked) + label.toggle-label + section.collapsible {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+input.toggle:checked + label.toggle-label + section.collapsible {
+  max-height: none;
+  opacity: 1;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+}
+
+/* Links */
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  background: var(--hover-bg);
+  color: var(--highlight);
+}
+
+/* Lists and text */
+ul {
+  list-style-type: square;
+  margin: 0.5em 0 1.5em 1.5em;
+  padding: 0;
+}
+b.title { color: var(--text); }
+i.authors { color: var(--text); opacity: 0.85; }
+span.venue {
+  font-variant: small-caps;
+  font-weight: bold;
+  color: var(--highlight);
+}
+</style>
 </head>
+
 <body>
-<h2>Jules Maire</h2>
+
+<h1>Jules Maire</h1>
 <p>
-I am a postdoc at ENS Paris with Céline Chevalier. <br/>
+Postdoctoral researcher in cryptography at <b>ENS Ulm</b>.<br>
+Research interests: <i>multiparty computation, zero-knowledge proofs, privacy-preserving technologies</i>.
 </p>
 
-<p>
-<b>Research:</b> Main interets in secure multiparty computation, zero-knowledge proofs, number theory in cryptography.
-</p>
+<!-- Research -->
+<input id="r1" class="toggle" type="checkbox" checked>
+<label for="r1" class="toggle-label">Research</label>
+<section class="collapsible">
+  <p>
+    My work focuses on the design of efficient and provably secure cryptographic primitives enabling privacy-preserving computations, with emphasis on secure multi-party computation and zero-knowledge protocols.
+  </p>
+</section>
 
-<p>
-<b>Academia:</b> Previously at EPFL (in mathematics from 2015-2020), CISPA (with Antoine Joux) and Sorbonne (PhD with Damien Vergnaud from 2021-2024). <br/>
-</p>
+<!-- Publications -->
+<input id="r2" class="toggle" type="checkbox">
+<label for="r2" class="toggle-label">Publications</label>
+<section class="collapsible">
 
-<label for="drop-publications" class="clicker"><h3>Publications</h3></label>
-<input id="drop-publications" class="clicker" type="checkbox">
-<div>
-<h4>2024</h4>
-<ul>
-<li>
-<b>Zero-Knowledge Arguments from Secure Multi-Party Computation.</b> PhD Thesis.
-<a href="https://eprint.iacr.org/2024/508">pdf</a>
-</li>
-</ul>
-<ul>
-<li>
-Maire, Vergnaud: <b>Secure Multi-Party Linear Algebra with Perfect Correctness.</b> Communications in Cryptology.
-<a href="https://eprint.iacr.org/2024/508">pdf</a>
-</li>
-</ul>
-<h4>2023</h4>
-<ul>
-<li>
-Maire, Vergnaud: <b>Efficient Zero-Knowledge Arguments and Digital Signatures via Sharing Conversion in the Head.</b> ESORICS 2023.
-<a href="https://eprint.iacr.org/2024/286">pdf</a>
-</li>
-</ul>
-<ul>
-<li>
-Maire, Vergnaud: <b>Commitments with Efficient Zero-Knowledge Arguments from Subset Sum Problems.</b> ESORICS 2023.
-<a href="https://eprint.iacr.org/2023/1452">pdf</a>
-</li>
-</ul>
-<h4>2022</h4>
-<ul>
-<li>
-Feneuil, Maire, Rivain, Vergnaud: <b>Zero-Knowledge Protocols for the Subset Sum Problem from MPC-in-the-Head with Rejection.</b> ASIACRYPT 2022.
-<a href="https://eprint.iacr.org/2022/223">pdf</a>
-</li>
-</ul>
-</div>
+  <h4>Preprint</h4>
+  <ul>
+    <li>
+      <b class="title">Multivariate Commitments and Signatures with Efficient Protocols.</b><br/>
+      <i class="authors">with Bouillaguet, Feneuil, Rivain, Sauvage, Vergnaud</i> — 
+      <span class="venue">Preprint</span> —
+      <a href="https://eprint.iacr.org/2025/2035.pdf">pdf</a>
+    </li>
+  </ul>
 
-<p>
-<b>Contact:</b> jules.maire at alumni.epfl.ch
-</p>
+  <h4>2026</h4>
+  <ul>
+    <li>
+      <b class="title">Blinding Post-Quantum Hash-and-Sign Signatures.</b><br/>
+      <i class="authors">with Bouillaguet, Feneuil, Rivain, Sauvage, Vergnaud</i> — 
+      <span class="venue">IEEE Security & Privacy</span> —
+      <a href="https://eprint.iacr.org/2025/895.pdf">pdf</a>
+    </li>
+  </ul>
+
+  <h4>2025</h4>
+  <ul>
+    <li>
+      <b class="title">Blind ECDSA from the ECDSA Assumption.</b><br/>
+      <i class="authors">with Pulval-Dady</i> — 
+      <span class="venue">Communications in Cryptology</span> —
+      <a href="https://eprint.iacr.org/2025/1827.pdf">pdf</a>
+    </li>
+    <li>
+      <b class="title">Compact zero-knowledge arguments for Blum integers.</b><br/>
+      <i class="authors">with Vergnaud</i> — 
+      <span class="venue">Theoretical Computer Science</span> —
+      <a href="https://hal.science/hal-04987985">pdf</a>
+    </li>
+  </ul>
+
+  <h4>2024</h4>
+  <ul>
+    <li>
+      <b class="title">Zero-Knowledge Arguments from Secure Multi-Party Computation.</b><br/>
+      <i class="authors">PhD Thesis</i> — 
+      <span class="venue">Sorbonne University</span> —
+      <a href="https://hal.science/tel-04906263v1">pdf</a>
+    </li>
+    <li>
+      <b class="title">Secure Multi-Party Linear Algebra with Perfect Correctness.</b><br/>
+      <i class="authors">with Vergnaud</i> — 
+      <span class="venue">Communications in Cryptology</span> —
+      <a href="https://eprint.iacr.org/2024/508">pdf</a>
+    </li>
+  </ul>
+
+  <h4>2023</h4>
+  <ul>
+    <li>
+      <b class="title">Efficient Zero-Knowledge Arguments and Digital Signatures via Sharing Conversion in the Head.</b><br/>
+      <i class="authors">with Vergnaud</i> — 
+      <span class="venue">ESORICS</span> —
+      <a href="https://eprint.iacr.org/2024/286">pdf</a>
+    </li>
+    <li>
+      <b class="title">Commitments with Efficient Zero-Knowledge Arguments from Subset Sum Problems.</b><br/>
+      <i class="authors">with Vergnaud</i> — 
+      <span class="venue">ESORICS</span> —
+      <a href="https://eprint.iacr.org/2023/1452">pdf</a>
+    </li>
+  </ul>
+
+  <h4>2022</h4>
+  <ul>
+    <li>
+      <b class="title">Zero-Knowledge Protocols for the Subset Sum Problem from MPC-in-the-Head with Rejection.</b><br/>
+      <i class="authors">with Feneuil, Rivain, Vergnaud</i> — 
+      <span class="venue">ASIACRYPT</span> —
+      <a href="https://eprint.iacr.org/2022/223">pdf</a>
+    </li>
+  </ul>
+
+</section>
+
+<!-- Academic Background -->
+<input id="r3" class="toggle" type="checkbox">
+<label for="r3" class="toggle-label">Academic Background</label>
+<section class="collapsible">
+  <p>
+    Previously at EPFL (Mathematics, 2015–2020), CISPA Helmholtz Center for Information Security (with Antoine Joux), and Sorbonne University (PhD with Damien Vergnaud, 2021–2024).
+  </p>
+</section>
+
+<!-- Contact -->
+<input id="r4" class="toggle" type="checkbox">
+<label for="r4" class="toggle-label">Contact</label>
+<section class="collapsible">
+  <p>📧 jules.maire [at] alumni.epfl.ch</p>
+</section>
 
 </body>
 </html>
-
