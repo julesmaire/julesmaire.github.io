@@ -42,25 +42,15 @@
       }
 
       .header-container {
-        display: flex;
-        align-items: center;
-        gap: 1.5em;
         margin-bottom: 1em;
       }
 
-      .header-text {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: calc(2.2em * 1.4 + 0.2em + 1.6em);
-      }
-
       img.profile {
-        flex-shrink: 0;
-        height: calc((2.2em * 1.4 + 0.2em + 1.6em) * 1.25);
+        float: left;
+        margin: calc(0.2em * 3) 1.5em 1em 0;
+        height: calc(2.2em * 1.6);
         width: auto;
         border-radius: 4px;
-        margin: 0;
       }
 
       p {
@@ -150,29 +140,25 @@
   </head>
 
   <body>
+    <img src="jmpicture.jpg" alt="Jules Maire" class="profile" />
     <div class="header-container">
-      <img src="jmpicture.jpg" alt="Jules Maire" class="profile" />
       <div class="header-text">
         <h1>Jules Maire</h1>
-        <p>Postdoctoral researcher in cryptography at ENS Ulm.</p>
+        <p>
+          Postdoctoral researcher in cryptography at
+          <a href="https://crypto.di.ens.fr/web2py">ENS Ulm</a>.<br />
+          My work focuses on the design of
+          <i>advanced cryptographic primitives</i>, with emphasis on
+          <i>secure multi-party computation</i>,
+          <i>zero-knowledge protocols</i>, and
+          <i>privacy-preserving technologies</i>.
+        </p>
       </div>
     </div>
 
     <!-- Research -->
-    <input id="r1" class="toggle" type="checkbox" checked />
-    <label for="r1" class="toggle-label">Research</label>
-    <section class="collapsible">
-      <p>
-        My work focuses on the design of <i>efficient</i> and
-        <i>provably secure</i> <i>cryptographic primitives</i>, with emphasis on
-        <i>secure multi-party computation</i>, <i>zero-knowledge protocols</i>,
-        and <i>privacy-preserving technologies</i>.
-      </p>
-    </section>
-
-    <!-- Publications -->
     <input id="r2" class="toggle" type="checkbox" />
-    <label for="r2" class="toggle-label">Publications</label>
+    <label for="r2" class="toggle-label">Research</label>
     <section class="collapsible">
       <ul>
         <li>
@@ -267,7 +253,9 @@
       <p>
         Previously at EPFL (Mathematics, 2015–2020), CISPA Helmholtz Center for
         Information Security (with Antoine Joux), and Sorbonne University (PhD
-        with Damien Vergnaud, 2021–2024).
+        with
+        <a href="https://www-almasty.lip6.fr/~vergnaud/">Damien Vergnaud</a>,
+        2021–2024).
       </p>
     </section>
 
