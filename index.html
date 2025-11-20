@@ -114,6 +114,32 @@
         background: var(--hover-bg);
         color: var(--highlight);
       }
+      a.icon-link {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .research-icons {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        margin-left: 0.8em;
+        vertical-align: middle;
+        opacity: 0;
+        max-width: 0;
+        overflow: hidden;
+        transition: opacity 0.25s ease, max-width 0.25s ease;
+      }
+
+      input.toggle:checked + label.toggle-label .research-icons {
+        opacity: 1;
+        max-width: 200px;
+      }
+
+      a.icon-link img {
+        height: 1.2em;
+        width: auto;
+        vertical-align: middle;
+      }
 
       /* Lists and text */
       ul {
@@ -145,8 +171,8 @@
       <div class="header-text">
         <h1>Jules Maire</h1>
         <p>
-          Postdoctoral researcher in cryptography at
-          <a href="https://crypto.di.ens.fr/web2py">ENS Ulm</a>.<br />
+          Postdoctoral researcher in cryptography at ENS Paris in the
+          <a href="https://crypto.di.ens.fr/web2py">Crypto Team</a>.<br />
           My work focuses on the design of
           <i>advanced cryptographic primitives</i>, with emphasis on
           <i>secure multi-party computation</i>,
@@ -158,7 +184,29 @@
 
     <!-- Research -->
     <input id="r2" class="toggle" type="checkbox" />
-    <label for="r2" class="toggle-label">Research</label>
+    <label for="r2" class="toggle-label">
+      Research
+      <span class="research-icons">
+        <a
+          href="https://dblp.org/pid/316/4135.html"
+          title="DBLP"
+          class="icon-link"
+        >
+          <img src="https://dblp.org/img/dblp.icon.192x192.png" alt="DBLP" />
+        </a>
+        ·
+        <a
+          href="https://scholar.google.fr/citations?user=cspR66AAAAAJ&hl=sv"
+          title="Google Scholar"
+          class="icon-link"
+        >
+          <img
+            src="https://scholar.google.com/favicon.ico"
+            alt="Google Scholar"
+          />
+        </a>
+      </span>
+    </label>
     <section class="collapsible">
       <ul>
         <li>
